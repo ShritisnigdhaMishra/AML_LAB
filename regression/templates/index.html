@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linear Regression</title>
+<style>
+  body{
+    font-family:Arial,sans-serif;
+    background:#f4f6f8;
+    padding:30px;
+  }
+  .container{
+    max-width:600px;
+    margin:0 auto;
+    background:white;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  }
+  h1{
+    text-align:center;
+    color:#2c3e50;
+  }
+  label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+  }
+  input{
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:15px;
+    box-sizing:border-box;
+  }
+  button{
+    margin-top:20px;
+    width:100%;
+    padding:12px;
+    background:white;
+    color:#2c3e50;
+    border:1px solid #333;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+  }
+  button:hover{
+    background:#eee;
+  }
+  img{
+    width:100%;
+    margin-top:20px;
+    border:1px solid #ddd;
+    border-radius:26px;
+  }
+  .graphBox{
+    margin-top: 20px;
+    padding: 12px 15px;
+    background: #ecf0f1;
+    border-radius: 6px;
+  }
+  .graphBox summary{
+    cursor:pointer;
+    font-weight:bold;
+    font-size:16px;
+    color:#2c3e50;
+  }
+  .resultArea{
+    margin-top:25px;
+    padding-top:20px;
+    border-top:1px solid #ddd;
+  }
+  .resetLink{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    padding:12px;
+    background:white;
+    color:#2c3e50;
+    border:1px solid #333;
+    border-radius:5px;
+    text-decoration:none;
+    box-sizing:border-box;
+  }
+  .resetLink:hover{
+    background:#eee;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Linear Regression Calculator</h1>
+  <form action="/" method="POST">
+    <label for="x_values">Enter the 1st feature (x):</label>
+    <input type="text" id="x_values" name="x_values"
+           placeholder="e.g. 1,2,3,4,5"
+           value="{{ x_values or '' }}" required>
+    <label for="y_values">Enter the 2nd feature (y):</label>
+    <input type="text" id="y_values" name="y_values"
+           placeholder="e.g. 2,4,5,4,5"
+           value="{{ y_values or '' }}" required>
+    <button type="submit">Submit</button>
+  </form>
+  <div class="resultArea">
+    <h3>Regression Line Equation</h3>
+    <p>{{ equation }}</p>
+    <details class="graphBox">
+      <summary>📊 Visualize</summary>
+      <img src="data:image/png;base64,{{ chart_image }}" alt="Regression Charts">
+    </details>
+    <a href="/" class="resetLink">Reset</a>
+  </div>
+</div>
+</body>
+</html>
